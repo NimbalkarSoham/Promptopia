@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import { Router } from 'next/router';
 import { useRouter, useSearchParams } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+
 
 import Form from '@components/Form';
 
@@ -55,6 +57,13 @@ const EditPrompt = () => {
             setSubmitting(false);
         }
     }
+
+    const {data: session } = useSession();
+  if(!session?.user){
+    return (
+      <h1>Please sign in first</h1>
+    )
+  }
 
 
   return (

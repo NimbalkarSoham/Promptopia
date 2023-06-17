@@ -1,6 +1,14 @@
-import PromptCard from "./PromptCard"
+import PromptCard from "./PromptCard";
+import { useSession } from 'next-auth/react';
+
 
 const Profile = ({ name, desc, data,  handleEdit, handleDelete}) => {
+  const {data: session } = useSession();
+  if(!session?.user){
+    return (
+      <h1>Please sign in first</h1>
+    )
+  }
   return (
     <section className="w-full">
       <h1 className="head_text text-left">

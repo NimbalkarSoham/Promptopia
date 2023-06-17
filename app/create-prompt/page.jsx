@@ -38,6 +38,11 @@ const CreatePrompt = () => {
             setSubmitting(false);
         }
     }
+    if(!session?.user){
+        return (
+            <h1>Please sign in first</h1>
+        )
+    }
   return (
     <Form 
         type = "Create"
